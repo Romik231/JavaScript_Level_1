@@ -59,6 +59,7 @@ if(a >= 0 && b >= 0) {
 
 // Задание 4
 
+/*
 let a = 10;
 switch (a){
 	case 10:
@@ -78,4 +79,57 @@ switch (a){
 		console.log("Что-то пошло не так")
 		
 }
+*/
+
+//Задание 5
+
+
+
+function summ(x, y) {
+
+    return (x + y);
+
+}
+
+console.log(summ(10, 20));
+
+function substraction(a, b) {
+    return (a - b);
+}
+console.log(substraction(30, 15));
+
+
+function multiply(d, e) {
+    return (d * e);
+}
+console.log(multiply(5, 5));
+
+
+function division(z, f) {
+    return (z / f);
+}
+console.log(division(6, 6));
+
+
+// Задание 6
+
+function mathOperation(arg1, arg2, operation) {
+    switch (operation) {
+        case "summ":
+            return (summ(arg1, arg2));
+            break;
+        case "substraction":
+            return (substraction(arg1, arg2));
+            break;
+        case "multiply":
+            return (multiply(arg1, arg2));
+            break;
+        case "division":
+            return (division(arg1, arg2));
+            break;
+    }
+
+}
+console.log(mathOperation(10,5, "division"));
+
 
