@@ -34,7 +34,7 @@ alert(b); // 3 - по аналогии в строке 25 b приняло зн�
 /*
 //Задание 2
 var a = 2;
-var x = 1 + (a *= 2);// x будет равен 5, a * 2 и a *= 2 по идее одно и тоже
+var x = 1 + (a *= 2);// x будет равен 5, a *= 2 тоже самое a = a * 2 
 */
 
 
@@ -84,7 +84,7 @@ switch (a){
 //Задание 5
 
 
-
+/*
 function summ(x, y) {
 
     return (x + y);
@@ -109,10 +109,15 @@ function division(z, f) {
     return (z / f);
 }
 console.log(division(6, 6));
+*/
+
+
+
+
 
 
 // Задание 6
-
+/*
 function mathOperation(arg1, arg2, operation) {
     switch (operation) {
         case "summ":
@@ -127,9 +132,30 @@ function mathOperation(arg1, arg2, operation) {
         case "division":
             return (division(arg1, arg2));
             break;
+        default:
+            return ("Необходимо вести функцию");
     }
 
 }
-console.log(mathOperation(10,5, "division"));
+console.log(mathOperation(10, 5, ""));
+*/
+
+// Задание 7
+
+/*
+console.log(0 == null); //null = undefined и больше ничему, поэтому результат false
+*/
 
 
+//Задание 8
+/*
+function power(val, pow) {
+    if (pow != 1) {
+        return (val * power(val, pow - 1));
+        }
+        else {
+            return (val);
+        }
+    }
+console.log(power(2,5));
+*/
