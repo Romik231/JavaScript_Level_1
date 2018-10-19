@@ -5,7 +5,7 @@ function isPrime(num) {
         return false;
     }
     for (var i = 2; i < num; i++) {
-        if(num%i==0)
+        if(num % i == 0)
             return false;
     }
     return true;    
@@ -15,7 +15,7 @@ function isPrime(num) {
 
 let prime_numbers = [];
 var a = 0;
-while(a <=100){
+while(a <= 100){
     if (isPrime(a)){
         prime_numbers.push(a);
     }
