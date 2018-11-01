@@ -11,6 +11,10 @@ let snakeTimer; //Таймер змейки
 let foodTimer;  //Таймер еды
 let foodCreationSpeed = 1000;   //Скорость появления еды
 let numberOfFood = [3, 0];  //Количество еды. 0 элемент-макс количество, 1 элемент - количество на поле
+let numberOfBarrier = [5, 0];
+let barrierCreateSpeed = 1000;
+let barrierTimer;
+
 
 let score = 0;  //Очки
 
@@ -144,6 +148,7 @@ function createFood() {
             //Выбираем случайную клетку
             let foodX = Math.floor(Math.random() * (FIELD_SIZE_X));
             let foodY = Math.floor(Math.random() * (FIELD_SIZE_Y));
+            
 
             let foodCell = document.getElementsByClassName("cell-" + foodX + "-" + foodY)[0];
             let foodCellClasses = foodCell.getAttribute("class").split(" ");
@@ -158,6 +163,32 @@ function createFood() {
         }
     }            
 }
+/**
+ *  Функция создания барьеров
+ */
+function createBarrier() {
+    if (numberOfBarrier[1] < numberOfBarrier[0]) {
+        let barrierCreated = false;
+        while (!barrierCreated) {
+            //Выбираем клетку
+            let barrierX = Math.floor(Math.random() * (FIELD_SIZE_X));
+            let barrierY = Math.floor(Math.random() * (FIELD_SIZE_Y));
+            let barrierCell = document.getElementsByClassName("cell-" + barrierX + "-" + barrierY)[0];
+            let barrierCellClasses = barrierCell.getAttribute("class").split(" ");
+            
+            //Если тут нет змейки и еды, то размещаем барьер
+            if (!barrierCellClasses.includes("snake-unit")) {
+                barrierCell.setAttribute("class", barrierCellClasses.join(" ") + "barrier-unit");
+                barrierCreated = true;
+                numberOfBarrier[1]++;
+            }
+            
+        }
+    }
+}
+
+
+
 
 /**
  * Проверяем встречу с едой
@@ -175,7 +206,9 @@ function haveFood(unit){
 		
 		//создаём новую еду
 		createFood();
-		
+        
+        //Создаем барьер
+        createBarrier();
 		//увеличиваем очки
 		score++;
 	}
@@ -217,7 +250,8 @@ function startGame() {
     respawn();
 
     snakeTimer = setInterval(moveSnake, snakeSpeed);
-    foodTimer = setInterval(createFood, foodCreationSpeed);    
+    foodTimer = setInterval(createFood, foodCreationSpeed);  
+    barrierTimer = setInterval(createBarrier, barrierCreateSpeed); 
 }
 
 /**
